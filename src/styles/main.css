@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+    --primary-font: 'Inter', sans-serif;
+    --background-color: #23272F;
+    --primary-color: #149ECA;
+	--secondary-color: #283541;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    font-family: var(--primary-font);
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+}
+
+#score-board {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+#select-genre-container {
+	max-width: 200px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+#select-genre-menu {
+	padding: 10px;
+	border-radius: 4px;
+	outline: none;
+}
+
+#loading-spinner {
+	width: 300px;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#game-board {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(5, 150px);
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.poster-img {
+    border-radius: 10px;
+    height: 225px;
+    width: 150px;
+    box-shadow: 0 0 20px 1px rgb(76, 76, 76);
+    cursor: pointer;
+    transition: transform .25s;
+}
+
+.poster-img:hover {
+    transform: scale(110%);
+}
+
+#backdrop {
+	position: fixed;
+	inset: 0;
+	background: #000;
+	opacity: 30%;
+	transition: opacity .4s ease-in-out;
+}
+
+#game-over-modal {
+	border-radius: 12px;
+	position: fixed;
+	z-index: 1;
+	padding: 28px 0px 28px 0px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 0 20px 1px rgb(76, 76, 76);
+	gap: 25px;
+	top: 50%;
+	left: 50%;
+	min-width: 350px;
+	background-color: var(--background-color);
+	text-align: center;
+	opacity: 100%;
+	transform-origin: center;
+	pointer-events: all;
+	transition: transform .2s ease-in-out, opacity .2s ease;
+	transform: translate(-50%, -50%);
+}
+
+#game-over-text {
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+
+.game-over-score-text {
+	color: white;
+}
+
+#play-again-btn-container {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+}
+
+#select-genre-btn,
+.play-again-btn {
+	padding: 15px;
+	border: none;
+	border-radius: 6px;
+	background-color: var(--secondary-color);
+	color: var(--primary-color);
+	font-weight: bold;
+	font-size: 1.2rem;
+	cursor: pointer;
+}
+
+#select-genre-btn {
+	padding: 10px;
+}
