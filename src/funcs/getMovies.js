@@ -11,7 +11,7 @@ const RAPID_API_OPTIONS = {
 	}
 };
 
-const OMDB_API_URL = 'http://www.omdbapi.com/'
+const OMDB_API_URL = 'https://www.omdbapi.com/'
 const OMDB_API_KEY = '5be7ce10'
 
 export const getRandomMovieList = async (genre) => {
