@@ -115,13 +115,17 @@ function App() {
 
   return (
     <>
-      <GameOver
-        isOver={isOver}
-        gameWon={gameWon}
-        score={score}
-        highScore={highScore}
-        playAgain={playAgain}
-      />
+      {isOver
+              ?
+                <GameOver
+                  gameWon={gameWon}
+                  score={score}
+                  highScore={highScore}
+                  playAgain={playAgain}
+                />
+              :
+                <></>
+      }
       <div className='header'><h1>Movie Memory Card React App</h1></div>
       <Scoreboard
         genre={genre}

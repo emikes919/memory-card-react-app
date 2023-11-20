@@ -6,13 +6,13 @@ const RAPID_API_URL = 'https://moviesminidatabase.p.rapidapi.com/movie/byGen/';
 const RAPID_API_OPTIONS = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '5597786e77msh91320d8bcac0839p149400jsn88cc4ccd9184',
+		'X-RapidAPI-Key': import.meta.env.VITE_X_RapidAPI_Key,
 		'X-RapidAPI-Host': 'moviesminidatabase.p.rapidapi.com'
 	}
 };
 
 const OMDB_API_URL = 'https://www.omdbapi.com/'
-const OMDB_API_KEY = '5be7ce10'
+const OMDB_API_KEY = import.meta.env.VITE_OMDB_API_KEY
 
 export const getRandomMovieList = async (genre) => {
     const url = `${RAPID_API_URL}${genre}`
