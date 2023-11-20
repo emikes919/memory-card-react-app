@@ -41,15 +41,12 @@ export const getMasterMovieList = async (genre) => {
     });
 
     let newMasterMovieList = [];
-    await Promise.all(posterUrlPromises)
-        .then(movieObjects => {
-            movieObjects.forEach(async obj => newMasterMovieList.push({ 
-                id: uuidv4(),
-                title: obj.title,
-                src: await obj.url
-            })) 
-        }
-    )
+    const movieObjects = await Promise.all(posterUrlPromises)
+    movieObjects.forEach(async obj => newMasterMovieList.push({ 
+        id: uuidv4(),
+        title: obj.title,
+        src: await obj.url
+    })) 
 
     return newMasterMovieList;
 }
