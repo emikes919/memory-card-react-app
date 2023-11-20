@@ -34,19 +34,11 @@ export const getMasterMovieList = async (genre) => {
     const randomMovieList = await getRandomMovieList(genre);
     const shuffledMovieList = shuffle(randomMovieList);
     
-    const posterUrlPromises = shuffledMovieList.map(async movie => {
-        const url = await getMoviePoster(movie.imdb_id);
-        const title = movie.title;
-        return { title, url };
-    });
-
-    let newMasterMovieList = [];
-    const movieObjects = await Promise.all(posterUrlPromises)
-    movieObjects.forEach(async obj => newMasterMovieList.push({ 
+    const newMasterMovieList = Promise.all(shuffledMovieList.map(async ({ imdb_id, title }) => ({
         id: uuidv4(),
-        title: obj.title,
-        src: await obj.url
-    })) 
+        title,
+        src: await getMoviePoster(imdb_id) 
+    })));
 
     return newMasterMovieList;
 }
