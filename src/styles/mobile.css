@@ -1,0 +1,34 @@
+@media (max-width: 600px) {
+    
+    #game-board {
+        grid-template-columns: repeat(3, 90px);
+        gap: 10px;
+    }
+
+    .poster-img {
+        border-radius: 6px;
+        height: 135px;
+        width: 90px;
+    }
+
+    #game-over-modal {
+        gap: 20px;
+        min-width: 300px;
+        padding: 20px;
+    }
+    
+    #game-over-text {
+        font-size: 1.2rem;
+    }
+    
+    #play-again-btn-container {
+        gap: 20px;
+    }
+    
+    .play-again-btn {
+        padding: 12px;
+        border-radius: 6px;
+        font-size: 1.1rem;
+    }
+    
+}
