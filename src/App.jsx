@@ -59,16 +59,6 @@ function App() {
     setScore(newScore);
   }
 
-  const turnOffGameBoardPointerEvents = () => {
-    const gameBoard = document.querySelector('#game-board');
-    gameBoard.style['pointer-events'] = 'none';
-  }
-
-  const turnOnGameBoardPointerEvents = () => {
-    const gameBoard = document.querySelector('#game-board');
-    gameBoard.style['pointer-events'] = 'all';
-  }
-
   const playAgain = (e) => {
     e.preventDefault();
   
@@ -76,7 +66,6 @@ function App() {
     setClickedMovieList([]);
     setIsOver(false);
     setGameWon(false);
-    turnOnGameBoardPointerEvents();
 
     if (e.target.id === 'new-genre-btn') { setSelectGenre(true) }
     else { updateCurrentMovieList(masterMovieList) }
@@ -91,7 +80,6 @@ function App() {
     const doubleClick = clickedMovieList.some(movie => movie.title === clickedMovie.title)
     if (doubleClick) { 
       setIsOver(true);
-      turnOffGameBoardPointerEvents();
       return;
     }
 
@@ -104,7 +92,6 @@ function App() {
       if (score === masterMovieList.length - 1) { // max score is equal to the length of the movies in the masterMovieList
         setGameWon(true);
         setIsOver(true);
-        turnOffGameBoardPointerEvents();
         return;
       }
       
@@ -159,6 +146,7 @@ function App() {
                                 </div>
                               :
                                 <Gameboard
+                                  isOver={isOver}
                                   currentMovieList={currentMovieList}
                                   handleClick={handleClick}
                                 />
