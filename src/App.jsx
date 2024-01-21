@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import GameOver from './components/GameOver';
 import Scoreboard from './components/Scoreboard';
 import Gameboard from './components/Gameboard';
@@ -38,10 +38,10 @@ function App() {
     }
   }, [genre]);
 
-  const updateClickedMovieList = (movie) => {
+  const updateClickedMovieList = useCallback((movie) => {
     const newClickedMovieList = clickedMovieList.concat(movie);
     setClickedMovieList(newClickedMovieList)
-  }
+  }, [clickedMovieList])
 
   const updateCurrentMovieList = (arr) => {
     const shuffledMovieList = shuffle(arr);
@@ -99,7 +99,7 @@ function App() {
     }
   }
 
-  const handleSelectGenre = (e) => {
+  const handleSelectGenre = useCallback((e) => {
     e.preventDefault();
     const newGenre = e.target.previousSibling.value
     
@@ -111,7 +111,7 @@ function App() {
     else { updateCurrentMovieList(masterMovieList) }
  
     setSelectGenre(false);
-  }
+  }, [genre, masterMovieList]) 
 
   return (
     <>
